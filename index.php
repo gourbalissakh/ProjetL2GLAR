@@ -1,5 +1,5 @@
 <?php
-include_once '../Databases/db.php';
+include_once 'Databases/db.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -7,9 +7,9 @@ include_once '../Databases/db.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
+    <link rel="stylesheet" href="CSS/style.css">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../CSS/style.css">
     <style>
         .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/garage-bg.jpg');
@@ -37,17 +37,17 @@ include_once '../Databases/db.php';
 </head>
 <body class='body-class'>
     <!-- Include header -->
-    <?php include_once '../Layouts/header.php'; ?>
+    <?php include_once 'Layouts/header.php'; ?>
 
-<!-- Message de bienvenue -->
+<section class="hero-section">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-white">Bienvenue</h1>
+        <p class="lead text-white">Découvrez nos services de réparation automobile</p>
+        <a href="#services" class="btn btn-danger btn-lg mt-3">Voir nos services</a>
+    </div>
+</section>
 
-        <div class="container" >
-            <h1 class="display-4 brand-title ">HUG MOTORS SERVICES</h1>
-            <p class="lead">Votre garage automobile de confiance</p>
-            <a href="#" class="btn btn-primary btn-lg">En savoir plus</a>
-        </div>
-
-    <!-- Services Section -->
+    <!-- Services Section  -->
    <section class="services-section py-5 " >
         <div class="container">
             <h2 class="text-center mb-5"> Services</h2>
@@ -82,8 +82,8 @@ include_once '../Databases/db.php';
 
     
 
-    <?php include_once '../Layouts/footer.php'; ?>
-
+    <!-- footer -->
+    <?php include_once 'Layouts/footer.php'; ?>
     <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </body>

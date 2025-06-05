@@ -12,9 +12,10 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light " >
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
-                <img src="../images/logo1.png" alt="Logo" width="30" height="30"" class="d-inline-block align-text-top">
-                AutoGarage
+                <img src="../images/logo1.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                AutoGarage Services
             </a>
+
             <!-- button de connexion a gauche  -->
             <form class="d-flex" role="search">
                 <a href="services.php" class="btn  me-2">Services</a>
