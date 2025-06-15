@@ -1,31 +1,74 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-</head>
-<link rel="stylesheet" href="../CSS/style.css">
-<body>
-    <!-- navigateur avec le logo de l'application a gauche et button de connexion a droite  -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light " >
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">
-                <img src="../images/logo1.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                AutoGarage Services
-            </a>
+<?php
+// header.php
+?>
 
-            <!-- button de connexion a gauche  -->
-            <form class="d-flex" role="search">
-                <a href="services.php" class="btn  me-2">Services</a>
-                <a href="contact.php" class="btn b me-2">Contact</a>
-            <a href="connexion.php" class="btn">Connexion</a>
-                </form>
-        </div>   
-        
-    </nav>
+<!-- HEADER NAVIGATION -->
+<nav class="navbar navbar-expand-lg navbar-custom shadow-sm px-4 sticky-top">
+  <a class="navbar-brand d-flex align-items-center" href="index.php">
+    <img src="images/logo1.png" alt="Logo Garage" width="55" height="55" class="me-2 rounded-circle">
+    <span class="fs-4 fw-bold text-white">Garage AutoPlus</span>
+  </a>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-</body>
-</html>
+  <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav align-items-lg-center gap-4">
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center gap-1" href="index.php">
+          <i class="bi bi-house-door-fill"></i> Accueil
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center gap-1" href="#services">
+          <i class="bi bi-tools"></i> Services
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center gap-1" href="#footer">
+          <i class="bi bi-envelope-fill"></i> Contact
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-light text-primary d-flex align-items-center gap-2 px-3 fw-bold" href="../Views/connexion.php">
+          <i class="bi bi-box-arrow-in-right"></i> Connexion
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- STYLE DU HEADER -->
+<style>
+  .navbar-custom {
+    background-color: rgb(115, 151, 187);
+  }
+
+  .navbar-custom .nav-link {
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-custom .nav-link:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 5px 10px;
+  }
+
+  .navbar-custom .navbar-toggler {
+    filter: invert(1);
+  }
+
+  .btn-light.text-primary:hover {
+    background-color: #0d6efd;
+    color: white;
+  }
+</style>
+
+<!-- BOOTSTRAP & ICONS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
