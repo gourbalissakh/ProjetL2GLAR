@@ -41,8 +41,6 @@ Ce projet vise à développer un système de gestion pour un garage automobile, 
 │   ├── footer.php
 │   └── header.php
 ├── mecanicien/
-│   ├── dashbord_mecanicien.php
-│   └── Liste_reparations.php
 └── Views/
     └── connexion.php
 ```
