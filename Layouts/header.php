@@ -32,7 +32,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="btn btn-light text-primary d-flex align-items-center gap-2 px-3 fw-bold" href="../Views/connexion.php">
+        <a class="btn btn-light text-primary d-flex align-items-center gap-2 px-3 fw-bold" href="./Views/connexion.php">
           <i class="bi bi-box-arrow-in-right"></i> Connexion
         </a>
       </li>
