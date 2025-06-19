@@ -1,27 +1,40 @@
 <?php
 // Fonction connectionUtilisateur() permet de connecter un utilisateur(admin, client, mecanicien) à la base de données
 function connectionUtilisateur($email, $mot_de_passe) {
-    include 'db.php'; // Inclure le fichier de connexion à la base de données
+    include 'db.php';
 
-    // Préparer la requête pour récupérer l'utilisateur
     $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE email = :email");
     $stmt->bindParam(':email', $email);
     $stmt->execute();
-    
-    // Vérifier si l'utilisateur existe
+
     if ($stmt->rowCount() > 0) {
         $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-        // Vérifier le mot de passe
-        if (password_verify($mot_de_passe, $utilisateur['mot_de_passe'])) {
-            return $utilisateur; // Retourner les informations de l'utilisateur
+
+        // Vérification directe (mot de passe non haché)
+        if ($mot_de_passe === $utilisateur['mot_de_passe']) {
+            return $utilisateur;
         } else {
-            return false; // Mot de passe incorrect
+            return false;
         }
     } else {
-        return false; // Utilisateur non trouvé
+        return false;
     }
 }
+
+function verifierConnexion($email, $mot_de_passe, $pdo) {
+    $query = "SELECT * FROM utilisateur WHERE email = :email";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user && password_verify($mot_de_passe, $user['mot_de_passe'])) {
+        return $user;
+    }
+
+    return false;
+}
+
 //fonction AjouterClient() permet au admin d'ajouter un client à la base de données
 function AjouterClient($nom, $prenom, $email, $mot_de_passe) {
     include 'db.php'; // Inclure le fichier de connexion à la base de données
@@ -352,4 +365,11 @@ function mettreAJourDiagnostic($id_diagnostic, $id_vehicule, $date_diagnostic, $
         return false; // Échec de la mise à jour du diagnostic
     }
 }
+
+function fetchCount($pdo, $query) {
+    $stmt = $pdo->query($query);
+    $count = $stmt->fetchColumn();
+    return $count !== false ? (int)$count : 0;
+}
+
 ?>

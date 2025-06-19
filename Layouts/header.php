@@ -5,7 +5,7 @@
 <!-- HEADER NAVIGATION -->
 <nav class="navbar navbar-expand-lg navbar-custom shadow-sm px-4 sticky-top">
   <a class="navbar-brand d-flex align-items-center" href="index.php">
-    <img src="images/logo1.png" alt="Logo Garage" width="55" height="55" class="me-2 rounded-circle">
+    <img src="images/logooo.png" alt="Logo Garage" width="55" height="55" class="me-2 rounded-circle">
     <span class="fs-4 fw-bold text-white">Garage AutoPlus</span>
   </a>
 

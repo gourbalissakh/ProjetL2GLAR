@@ -89,23 +89,8 @@ foreach ($utilisateurs as $u) {
     $stmt->execute($u);
 }
 
-// Insertion d’un véhicule
-$pdo->exec("INSERT IGNORE INTO vehicule (marque, immatriculation, id_utilisateur)
-VALUES ('Toyota', '1234ABC', 1)");
 
-// Insertion d’une réparation
-$pdo->exec("INSERT IGNORE INTO reparation (id_vehicule, date_reparation, description)
-VALUES (1, '2023-10-01', 'Changement d\'huile')");
 
-// Insertion d’une facture
-$pdo->exec("INSERT IGNORE INTO facture (id_reparation, montant, date_facture)
-VALUES (1, 100.00, '2023-10-01')");
 
-// Insertion d’un diagnostic
-$pdo->exec("INSERT IGNORE INTO diagnostic (id_vehicule, date_diagnostic, description)
-VALUES (1, '2023-10-01', 'Diagnostic général')");
 
-// Insertion d’un rendez-vous
-$pdo->exec("INSERT IGNORE INTO rendez_vous (id_utilisateur, date_rendez_vous, heure_rendez_vous)
-VALUES (1, '2023-10-05', '10:00:00')");
 ?>
