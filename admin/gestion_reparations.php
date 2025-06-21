@@ -61,6 +61,7 @@ $stmt = $pdo->prepare("
     LEFT JOIN utilisateur m ON r.id_mecanicien = m.id AND m.role = 'mecanicien'
     ORDER BY r.id DESC
 ");
+
 $stmt->execute();
 $reparations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

@@ -30,7 +30,15 @@ if (!$facture) {
     die("Facture introuvable.");
 }
 
-// Contenu HTML du PDF
+// Préparer le logo en base64 (pour qu'il s'affiche même en PDF)
+$logoPath = '../images/logooo.png';
+if (!file_exists($logoPath)) {
+    die("Logo introuvable.");
+}
+$logoData = base64_encode(file_get_contents($logoPath));
+$logoSrc = 'data:image/jpeg;base64,' . $logoData;
+
+// Début du contenu HTML
 ob_start();
 ?>
 
@@ -43,74 +51,97 @@ ob_start();
       font-family: DejaVu Sans, sans-serif;
       font-size: 12px;
       color: #333;
-      padding: 20px;
+      padding: 30px;
     }
     .header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 15px;
     }
-    .header img {
-      height: 70px;
+    .logo {
+      height: 60px;
+      margin-bottom: 8px;
     }
     h1 {
       font-size: 20px;
-      color: #0056b3;
-      margin-bottom: 5px;
+      color: rgb(88, 119, 149);
+      margin: 5px 0;
     }
-    .info {
-      margin-bottom: 20px;
+    .section {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px 15px;
+      margin-bottom: 10px;
     }
-    .info strong {
+    .section h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: rgb(115, 151, 187);
+    }
+    .row {
+      margin-bottom: 4px;
+    }
+    .label {
+      font-weight: bold;
       display: inline-block;
-      width: 150px;
+      width: 130px;
     }
     .footer {
-      margin-top: 30px;
+      margin-top: 25px;
       text-align: center;
-      font-size: 11px;
-      color: #777;
+      font-size: 10px;
+      color: #999;
     }
-    .box {
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 10px;
-    }
+    .garage-info p {
+  margin: 3px 0;
+  font-size: 11px;
+  color: #555;
+}
+.garage-info a:hover {
+  text-decoration: underline;
+}
+
   </style>
 </head>
 <body>
 
 <div class="header">
-  <img src="../images/logooo.jpg" alt="Logo Garage AutoPlus"><br>
-  <h1>Garage AutoPlus</h1>
-  <p><strong>Facture #<?= $facture['facture_id'] ?></strong></p>
+  <img src="<?= $logoSrc ?>" class="logo" alt="Logo AutoPlus">
+  <h1>Facture n°<?= $facture['facture_id'] ?></h1>
 </div>
 
-<div class="box">
-  <h3>Informations Client</h3>
-  <p><strong>Nom :</strong> <?= htmlspecialchars($facture['nom_client']) ?> <?= htmlspecialchars($facture['prenom_client']) ?></p>
+<div class="section">
+  <h3>Client</h3>
+  <div class="row"><span class="label">Nom :</span> <?= htmlspecialchars($facture['nom_client']) ?> <?= htmlspecialchars($facture['prenom_client']) ?></div>
 </div>
 
-<div class="box">
-  <h3>Détails Véhicule</h3>
-  <p><strong>Marque :</strong> <?= htmlspecialchars($facture['marque']) ?></p>
-  <p><strong>Immatriculation :</strong> <?= htmlspecialchars($facture['immatriculation']) ?></p>
+<div class="section">
+  <h3>Véhicule</h3>
+  <div class="row"><span class="label">Marque :</span> <?= htmlspecialchars($facture['marque']) ?></div>
+  <div class="row"><span class="label">Immatriculation :</span> <?= htmlspecialchars($facture['immatriculation']) ?></div>
 </div>
 
-<div class="box">
+<div class="section">
   <h3>Réparation</h3>
-  <p><strong>Date :</strong> <?= $facture['date_reparation'] ?></p>
-  <p><strong>Description :</strong> <?= nl2br(htmlspecialchars($facture['desc_reparation'])) ?></p>
+  <div class="row"><span class="label">Date :</span> <?= $facture['date_reparation'] ?></div>
+  <div class="row"><span class="label">Description :</span> <?= nl2br(htmlspecialchars($facture['desc_reparation'])) ?></div>
 </div>
 
-<div class="box">
-  <h3>Facturation</h3>
-  <p><strong>Date de Facture :</strong> <?= $facture['date_facture'] ?></p>
-  <p><strong>Montant :</strong> <?= number_format($facture['montant'], 2, ',', ' ') ?> FCFA</p>
+<div class="section">
+  <h3>Montant</h3>
+  <div class="row"><span class="label">Date Facture :</span> <?= $facture['date_facture'] ?></div>
+  <div class="row"><span class="label">Montant :</span> <strong><?= number_format($facture['montant'], 2, ',', ' ') ?> FCFA</strong></div>
+</div>
+<div class="garage-info section">
+  <h3>Garage AutoPlus</h3>
+  <p>Adresse : 123 Rue de l’Entretien, N’Djamena, Tchad</p>
+  <p>Téléphone : +235 123 456 789</p>
+  <p>Email : contact@autoplus.td</p>
+  <p>Site web : <a href="http://www.autoplus.td" style="color: rgb(115, 151, 187); text-decoration:none;">www.autoplus.td</a></p>
 </div>
 
 <div class="footer">
-  &copy; <?= date('Y') ?> Garage AutoPlus - www.autoplus.td
+  &copy; <?= date('Y') ?> Garage AutoPlus - www.autoplus.td<br>
+  Merci pour votre confiance 🙏
 </div>
 
 </body>
@@ -119,13 +150,14 @@ ob_start();
 <?php
 $html = ob_get_clean();
 
+// Génération PDF avec Dompdf
 $dompdf = new Dompdf();
 $dompdf->loadHtml($html);
 
-// Orientation portrait A4
+// A4 Portrait
 $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
 
-// Téléchargement ou affichage
+// Affichage dans le navigateur (PDF)
 $dompdf->stream("facture_{$facture['facture_id']}.pdf", ["Attachment" => false]);
 exit;

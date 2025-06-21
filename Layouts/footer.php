@@ -64,9 +64,9 @@
       <div class="col-md-4 mb-4">
         <h5 class="footer-title">Contact</h5>
         <ul class="list-unstyled">
-          <li><i class="fa-solid fa-location-dot me-2"></i>123 Rue du Garage, Dakar, Sénégal</li>
-          <li><i class="fa-solid fa-phone me-2"></i>+221 77 123 45 67</li>
-          <li><i class="fa-solid fa-envelope me-2"></i>contact@garageautoplus.sn</li>
+          <li><i class="fa-solid fa-location-dot me-2"></i>123 Rue de 40 metre ,N’Djamena, Tchad </li>
+          <li><i class="fa-solid fa-phone me-2"></i>+235 66 67 89 22</li>
+          <li><i class="fa-solid fa-envelope me-2"></i>contact@garageautoplus.td</li>
         </ul>
       </div>
       <div class="col-md-4 mb-4">

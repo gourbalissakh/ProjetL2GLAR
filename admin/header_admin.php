@@ -148,7 +148,7 @@ $nomAdmin = $_SESSION['admin_nom'] ?? 'Administateur';
 <header class="gmi-header shadow-sm">
   <div class="container d-flex align-items-center justify-content-between flex-nowrap">
     <!-- Logo -->
-    <a href="dashboard.php" class="gmi-logo" aria-label="Accueil AutoPlus Garage">
+    <a href="dashboard_admin.php" class="gmi-logo" aria-label="Accueil AutoPlus Garage">
       <img src="../images/logooo.png" alt="Logo AutoPlus" />
       AutoPlus Garage
     </a>
@@ -163,7 +163,7 @@ $nomAdmin = $_SESSION['admin_nom'] ?? 'Administateur';
       <a href="profil_admin.php" class="btn btn-primary" title="Voir le profil">
         <i class="bi bi-person-circle"></i> Profil
       </a>
-      <a href="logout.php" class="logout-link btn" title="Se déconnecter">
+      <a href="../Views/deconnexion.php" class="logout-link btn" title="Se déconnecter">
         <i class="bi bi-box-arrow-right"></i> Déconnexion
       </a>
     </div>

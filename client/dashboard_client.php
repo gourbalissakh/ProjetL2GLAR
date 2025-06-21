@@ -26,6 +26,8 @@ $reparations = $pdo->prepare("
 ");
 $reparations->execute([$_SESSION['utilisateur_id']]);
 $mes_reparations = $reparations->fetchAll(PDO::FETCH_ASSOC);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -83,6 +85,9 @@ $mes_reparations = $reparations->fetchAll(PDO::FETCH_ASSOC);
   </style>
 </head>
 <body>
+  <!-- appeler le header client -->
+   <?php include 'header_client.php'; ?>
+
 
 <div class="container my-4">
   <div class="hero">

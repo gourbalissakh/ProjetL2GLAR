@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
   <nav class="navbar navbar-expand-lg shadow-sm">
     <div class="container-fluid">
-      <a class="navbar-brand text-white" href="/garage/index.php">
+      <a class="navbar-brand text-white" href="../index.php">
         <i class="bi bi-tools me-2"></i>Garage AutoPlus
       </a>
     </div>
